@@ -3,7 +3,7 @@ package com.fubailin.truffle;
 import com.oracle.truffle.api.CallTarget;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OverflowTest {
     @Test
@@ -16,6 +16,6 @@ public class OverflowTest {
 
         var result = callTarget.call();
 
-        assertNotEquals(Integer.MIN_VALUE, result);
+        assertEquals(Integer.MIN_VALUE, result);
     }
 }

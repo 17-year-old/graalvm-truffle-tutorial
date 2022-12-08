@@ -14,7 +14,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="graalvm-truffle-tutorial.main" options="--add-exports org.graalvm.truffle/com.oracle.truffle.api.frame=ALL-UNNAMED --add-exports org.graalvm.truffle/com.oracle.truffle.api.nodes=ALL-UNNAMED --add-exports org.graalvm.truffle/com.oracle.truffle.api=ALL-UNNAMED" />
+      <module name="graalvm-truffle-tutorial.main" options="--add-exports org.graalvm.truffle/com.oracle.truffle.api.frame=ALL-UNNAMED --add-exports org.graalvm.truffle/com.oracle.truffle.api.nodes=ALL-UNNAMED" />
       <module name="graalvm-truffle-tutorial.test" options="--add-exports org.graalvm.truffle/com.oracle.truffle.api=ALL-UNNAMED" />
     </option>
   </component>

@@ -13,14 +13,4 @@ public class IntLiteralNode extends EasyScriptNode {
     public int executeInt(VirtualFrame frame) {
         return this.value;
     }
-
-    @Override
-    public double executeDouble(VirtualFrame frame) {
-        return this.value;
-    }
-
-    @Override
-    public Object executeGeneric(VirtualFrame frame) {
-        return this.value;
-    }
 }

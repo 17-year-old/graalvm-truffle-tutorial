@@ -14,33 +14,4 @@ public class ExecuteNodesTest {
         var result = callTarget.call();
         assertEquals(46, result);
     }
-
-    @Test
-    public void adding_1_to_int_max_does_not_overflow() {
-        EasyScriptNode exprNode = new AdditionNode(
-                new IntLiteralNode(Integer.MAX_VALUE),
-                new IntLiteralNode(1));
-        var rootNode = new EasyScriptRootNode(exprNode);
-        CallTarget callTarget = rootNode.getCallTarget();
-
-        var result = callTarget.call();
-
-        assertEquals(Integer.MAX_VALUE + 1D, result);
-    }
-
-    /**
-     * A test that shows that ints and doubles can interoperate with each other.
-     */
-    @Test
-    public void adds_2_point_5_and_6_correctly() {
-        EasyScriptNode exprNode = new AdditionNode(
-                new DoubleLiteralNode(2.5),
-                new IntLiteralNode(6));
-        var rootNode = new EasyScriptRootNode(exprNode);
-        CallTarget callTarget = rootNode.getCallTarget();
-
-        var result = callTarget.call();
-
-        assertEquals(8.5, result);
-    }
 }

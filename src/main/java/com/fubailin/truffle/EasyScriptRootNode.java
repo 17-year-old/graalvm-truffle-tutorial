@@ -16,8 +16,6 @@ public class EasyScriptRootNode extends RootNode {
 
     @Override
     public Object execute(VirtualFrame frame) {
-        return this.exprNode.executeGeneric(frame);
+        return this.exprNode.executeInt(frame);
     }
-
-
 }

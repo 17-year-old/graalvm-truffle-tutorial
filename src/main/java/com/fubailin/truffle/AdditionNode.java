@@ -1,23 +1,21 @@
 package com.fubailin.truffle;
 
-import com.oracle.truffle.api.frame.VirtualFrame;
-import com.oracle.truffle.api.nodes.Node;
+import com.oracle.truffle.api.dsl.NodeChild;
+import com.oracle.truffle.api.dsl.Specialization;
 
-public class AdditionNode extends EasyScriptNode {
+// we want our generated node to have 2 children
+@NodeChild("leftNode")
+@NodeChild("rightNode")
+public abstract class AdditionNode extends EasyScriptNode {
 
-    @SuppressWarnings("FieldMayBeFinal")
-    @Node.Child
-    private EasyScriptNode leftNode, rightNode;
-
-    public AdditionNode(EasyScriptNode leftNode, EasyScriptNode rightNode) {
-        this.leftNode = leftNode;
-        this.rightNode = rightNode;
+    @Specialization(rewriteOn = ArithmeticException.class)
+    protected int addInts(int leftValue, int rightValue) {
+        return Math.addExact(leftValue, rightValue);
     }
 
-    @Override
-    public int executeInt(VirtualFrame frame) {
-        int leftValue = this.leftNode.executeInt(frame);
-        int rightValue = this.rightNode.executeInt(frame);
+
+    @Specialization(replaces = "addInts")
+    protected double addDoubles(double leftValue, double rightValue) {
         return leftValue + rightValue;
     }
 }

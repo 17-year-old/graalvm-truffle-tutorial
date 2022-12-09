@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'antlr'
 }
 
 group 'com.fubailin.truffle'
@@ -14,9 +15,11 @@ ext {
     antlr_version = '4.11.1'
 }
 
+
 dependencies {
     implementation "org.graalvm.truffle:truffle-api:$graal_version"
     annotationProcessor "org.graalvm.truffle:truffle-dsl-processor:$graal_version"
+    antlr "org.antlr:antlr4:$antlr_version"
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
@@ -29,7 +32,8 @@ test {
             '--add-exports',
             'org.graalvm.truffle/com.oracle.truffle.api.nodes=ALL-UNNAMED',
             '--add-exports',
-            'org.graalvm.truffle/com.oracle.truffle.api.dsl=ALL-UNNAMED'
+            'org.graalvm.truffle/com.oracle.truffle.api.dsl=ALL-UNNAMED',
+            '-Dgraalvm.locatorDisabled=true'
 
     useJUnitPlatform()
 }
